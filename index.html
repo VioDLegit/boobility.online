@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boobility</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Welcome to Boobility</h1>
+  <div id="gallery" class="gallery"></div>
+  <button onclick="loadImages()">Load More</button>
+
+  <script>
+    async function fetchWaifuImage() {
+      const res = await fetch('https://api.waifu.pics/nsfw/waifu');
+      const data = await res.json();
+      return data.url;
+    }
+
+    async function loadImages(count = 10) {
+      const gallery = document.getElementById('gallery');
+      for (let i = 0; i < count; i++) {
+        const img = document.createElement('img');
+        img.src = await fetchWaifuImage();
+        img.alt = "NSFW Waifu";
+        gallery.appendChild(img);
+      }
+    }
+
+    // Load initial batch
+    loadImages();
+  </script>
+</body>
+</html>
