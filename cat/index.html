@@ -49,15 +49,15 @@
   </style>
 </head>
 <body>
-  <h1>NSFW 😼girls</h1>
-  <p>Join boostility today<a href="https://discord.gg/boostility" target="_blank" style="color:#ff66cc;">.gg/boostility!</a></p>
+  <h1>CatGirls 😺</h1>
+  <p>Join boostility today <a href="https://discord.gg/boostility" target="_blank" style="color:#ff66cc;">.gg/boostility!</a></p>
 
   <div id="gallery" class="gallery"></div>
   <button onclick="loadCatgirls()">More Neko?</button>
 
   <script>
     async function fetchCatgirl() {
-      const res = await fetch('https://nekos.life/api/v2/img/nsfw_neko_gif');
+      const res = await fetch('https://api.waifu.pics/nsfw/neko');
       const data = await res.json();
       return data.url;
     }
@@ -65,8 +65,9 @@
     async function loadCatgirls(count = 6) {
       const gallery = document.getElementById('gallery');
       for (let i = 0; i < count; i++) {
+        const url = await fetchCatgirl();
         const img = document.createElement('img');
-        img.src = await fetchCatgirl();
+        img.src = url;
         img.alt = "NSFW Catgirl";
         gallery.appendChild(img);
       }
