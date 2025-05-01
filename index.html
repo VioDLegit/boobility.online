@@ -22,24 +22,17 @@
       text-decoration: underline;
     }
 
-    .gallery img {
-      width: 200px;
-      height: 200px;
-      margin: 10px;
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    #gallery img {
+      width: 100%;
       border-radius: 8px;
-    }
-
-    button {
-      background-color: #5865F2;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #4a50d0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
@@ -57,7 +50,7 @@
 
   <script>
     async function fetchWaifuImage() {
-      const res = await fetch('https://boobility.online/api/nsfw/waifu');
+      const res = await fetch('https://api.waifu.pics/nsfw/waifu');
       const data = await res.json();
       return data.url;
     }
