@@ -1,5 +1,5 @@
 async function fetchWaifuImage() {
-  const res = await fetch('https://boobility.onrender.com/api/nsfw/waifu'); 
+  const res = await fetch('https://boobility.online/api/nsfw/waifu');
   const data = await res.json();
   return data.url;
 }
